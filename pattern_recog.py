@@ -21,11 +21,11 @@ waldo = cv2.imread(args["waldo"])
 result = cv2.matchTemplate(puzzle, waldo, cv2.TM_CCOEFF)
 (_, _, minLoc, maxLoc) = cv2.minMaxLoc(result)
 
+# grab the bounding box of waldo and extract him from
 # the puzzle image
 topLeft = maxLoc
 botRight = (topLeft[0] + waldoWidth, topLeft[1] + waldoHeight)
 roi = puzzle[topLeft[1]:botRight[1], topLeft[0]:botRight[0]]
-
 
 # construct a darkened transparent 'layer' to darken everything
 # in the puzzle except for waldo
